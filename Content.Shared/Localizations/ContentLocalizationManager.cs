@@ -10,7 +10,10 @@ namespace Content.Shared.Localizations
         [Dependency] private readonly ILocalizationManager _loc = default!;
 
         // If you want to change your codebase's language, do it here.
-        private const string Culture = "en-US";
+        // Green-Localization-Start
+        private const string Culture = "ru-RU";
+        private const string FallbackCulture = "en-US";
+        // Green-Localization-End
 
         /// <summary>
         /// Custom format strings used for parsing and displaying minutes:seconds timespans.
@@ -39,6 +42,13 @@ namespace Content.Shared.Localizations
             _loc.AddFunction(culture, "NATURALFIXED", FormatNaturalFixed);
             _loc.AddFunction(culture, "NATURALPERCENT", FormatNaturalPercent);
             _loc.AddFunction(culture, "PLAYTIME", FormatPlaytime);
+
+            // Green-Localization-Start
+            var cultureFallback = new CultureInfo(FallbackCulture);
+
+            _loc.LoadCulture(cultureFallback);
+            _loc.SetFallbackCluture(cultureFallback);
+            // Green-Localization-End
 
 
             /*

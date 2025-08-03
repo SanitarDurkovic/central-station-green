@@ -109,6 +109,10 @@
   - type: BypassInteractionChecks
   - type: ExplosionResistance
     damageCoefficient: 0
+  # Green-AGhost-Start
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 30
+  # Green-AGhost-End
 
 - type: entity
   abstract: true

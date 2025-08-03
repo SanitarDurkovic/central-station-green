@@ -152,8 +152,10 @@ namespace Content.Server.Mapping
             }
 
             // don't interrupt mapping with events or auto-shuttle
-            shell.ExecuteCommand("changecvar events.enabled false");
-            shell.ExecuteCommand("changecvar shuttle.auto_call_time 0");
+            // Green-FixMapping-Start
+            //shell.ExecuteCommand("changecvar events.enabled false");
+            //shell.ExecuteCommand("changecvar shuttle.auto_call_time 0");
+            // Green-FixMapping-End
 
             if (grid != null)
                 _mappingSystem.ToggleAutosave(grid.Value.Owner, toLoad ?? "NEWGRID");
