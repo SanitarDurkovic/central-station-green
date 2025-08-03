@@ -8,6 +8,18 @@ public sealed partial class GrowlingAccentSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
 
+    [GeneratedRegex("r+")]
+    private static partial Regex SmallRRegex();
+
+    [GeneratedRegex("R+")]
+    private static partial Regex BigRRegex();
+
+    [GeneratedRegex("р+")]
+    private static partial Regex CyrillicSmallRRegex();
+
+    [GeneratedRegex("Р+")]
+    private static partial Regex CyrillicBigRRegex();
+
     public override void Initialize()
     {
         SubscribeLocalEvent<GrowlingAccentComponent, AccentGetEvent>(OnAccent);
@@ -29,16 +41,4 @@ public sealed partial class GrowlingAccentSystem : EntitySystem
 
         e.Message = message;
     }
-
-    [GeneratedRegex("r+")]
-    private static partial Regex SmallRRegex();
-
-    [GeneratedRegex("R+")]
-    private static partial Regex BigRRegex();
-
-    [GeneratedRegex("р+")]
-    private static partial Regex CyrillicSmallRRegex();
-
-    [GeneratedRegex("Р+")]
-    private static partial Regex CyrillicBigRRegex();
 }
