@@ -13,6 +13,24 @@
       key_slots:
       - EncryptionKeyCommon
   - type: Headset
+    # Green-HeadsetSound-Start
+    sound:
+      collection: Headset
+      params:
+        volume: -5
+        variation: 0.025
+    toggledSoundChannels:
+    - CentCom
+    - Command
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+    - Syndicate
+    - Freelance
+    # Green-HeadsetSound-End
   - type: EncryptionKeyHolder
     keySlots: 4
   - type: Sprite
@@ -86,6 +104,13 @@
       key_slots:
       - EncryptionKeyCentCom
       - EncryptionKeyStationMaster
+  # Green-HeadsetSound-Start
+  - type: Headset
+    toggledSoundChannels:
+    - CentCom
+    - Command
+    - Syndicate
+  # Green-HeadsetSound-End
   - type: Sprite
     sprite: Clothing/Ears/Headsets/centcom.rsi
   - type: Clothing
@@ -101,6 +126,13 @@
     containers:
       key_slots:
       - EncryptionKeyStationMaster
+  # Green-HeadsetSound-Start
+  - type: Headset
+    toggledSoundChannels:
+    - CentCom
+    - Command
+    - Syndicate
+  # Green-HeadsetSound-End
   - type: Sprite
     sprite: Clothing/Ears/Headsets/command.rsi
   - type: Clothing

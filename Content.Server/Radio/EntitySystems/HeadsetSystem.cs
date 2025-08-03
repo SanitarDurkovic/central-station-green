@@ -5,6 +5,7 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
 using Content.Shared.Radio.EntitySystems;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 
@@ -14,6 +15,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 {
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -111,8 +113,20 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             RaiseLocalEvent(parent, ref relayEvent);
         }
 
-        if (TryComp(parent, out ActorComponent? actor))
-            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
+        // Green-HeadsetSound-Start
+        if (!TryComp<ActorComponent>(parent, out var actor))
+            return;
+
+        _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
+
+        if (uid == args.RadioSource)
+            return;
+
+        if (!component.ToggledSoundChannels.Contains(args.Channel.ID))
+            return;
+
+        _audio.PlayEntity(component.Sound, actor.PlayerSession, uid);
+        // Green-HeadsetSound-End
     }
 
     private void OnEmpPulse(EntityUid uid, HeadsetComponent component, ref EmpPulseEvent args)

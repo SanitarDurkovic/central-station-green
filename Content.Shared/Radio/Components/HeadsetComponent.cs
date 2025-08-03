@@ -1,4 +1,6 @@
 using Content.Shared.Inventory;
+using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Radio.Components;
 
@@ -15,4 +17,12 @@ public sealed partial class HeadsetComponent : Component
 
     [DataField("requiredSlot")]
     public SlotFlags RequiredSlot = SlotFlags.EARS;
+
+    // Green-HeadsetSound-Start
+    [DataField]
+    public SoundSpecifier Sound;
+
+    [DataField]
+    public HashSet<ProtoId<RadioChannelPrototype>> ToggledSoundChannels = [];
+    // Green-HeadsetSound-End
 }
