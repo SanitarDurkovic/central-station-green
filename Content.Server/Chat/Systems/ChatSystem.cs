@@ -63,7 +63,10 @@ public sealed partial class ChatSystem : SharedChatSystem
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
     public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
-    public const string DefaultAnnouncementSound = "/Audio/Announcements/announce.ogg";
+    // Green-Announcements-Start
+    public const string DefaultAnnouncementSound = "/Audio/_Green/Announcements/announce.ogg";
+    public const string CentcommAnnouncementSound = "/Audio/_Green/Announcements/centcomm.ogg";
+    // Green-Announcements-End
 
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;
@@ -327,6 +330,11 @@ public sealed partial class ChatSystem : SharedChatSystem
         _chatManager.ChatMessageToAll(ChatChannel.Radio, message, wrappedMessage, default, false, true, colorOverride);
         if (playSound)
         {
+            // Green-Announcements-Start
+            if (sender == Loc.GetString("admin-announce-announcer-default"))
+                announcementSound = new SoundPathSpecifier(CentcommAnnouncementSound);
+            // Green-Announcements-End
+
             _audio.PlayGlobal(announcementSound == null ? DefaultAnnouncementSound : _audio.ResolveSound(announcementSound), Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");

@@ -78,7 +78,11 @@
   - type: StationEvent
     startAnnouncementColor: "#18abf5"
     startAudio:
-      path: /Audio/Announcements/announce.ogg
+      # Green-Announcements-Start
+      path: /Audio/_Green/Announcements/flux.ogg
+      params:
+        volume: -5
+      # Green-Announcements-End
     weight: 8
     duration: 35
   - type: AnomalySpawnRule
@@ -94,7 +98,11 @@
   - type: StationEvent
     startAnnouncementColor: "#18abf5"
     startAudio:
-      path: /Audio/Announcements/announce.ogg
+      # Green-Announcements-Start
+      path: /Audio/_Green/Announcements/blusp_anomalies.ogg
+      params:
+        volume: -5
+      # Green-Announcements-End
     weight: 8
     duration: 35
   - type: BluespaceArtifactRule
@@ -338,8 +346,18 @@
   - type: StationEvent
     startAnnouncement: station-event-gas-leak-start-announcement
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      # Green-Announcements-Start
+      path: /Audio/_Green/Announcements/gasleak_start.ogg
+      params:
+        volume: -5
+      # Green-Announcements-End
     endAnnouncement: station-event-gas-leak-end-announcement
+    # Green-Announcements-Start
+    endAudio:
+      path: /Audio/_Green/Announcements/gasleak_end.ogg
+      params:
+        volume: -5
+    # Green-Announcements-End
     weight: 8
   - type: GasLeakRule
 
@@ -379,7 +397,11 @@
     startAnnouncement: station-event-solar-flare-start-announcement
     endAnnouncement: station-event-solar-flare-end-announcement
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      # Green-Announcements-Start
+      path: /Audio/_Green/Announcements/comms_blackout.ogg
+      params:
+        volume: -5
+      # Green-Announcements-End
     duration: 120
     maxDuration: 240
   - type: SolarFlareRule
@@ -405,7 +427,11 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-clog-start-announcement
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      # Green-Announcements-Start
+      path: /Audio/_Green/Announcements/ventclog.ogg
+      params:
+        volume: -5
+      # Green-Announcements-End
     earliestStart: 15
     minimumPlayers: 15
     weight: 5
