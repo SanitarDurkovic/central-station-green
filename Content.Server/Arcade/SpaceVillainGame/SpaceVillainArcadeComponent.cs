@@ -62,7 +62,7 @@ public sealed partial class SpaceVillainArcadeComponent : SharedSpaceVillainArca
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("possibleFightVerbs")]
     public List<string> PossibleFightVerbs = new()
-        {"Defeat", "Annihilate", "Save", "Strike", "Stop", "Destroy", "Robust", "Romance", "Pwn", "Own"};
+        {"Одолей", "Аннигилируй", "Спаси", "Ударь", "Останови", "Разрушь", "Заробасть", "Заромансь"}; // Green-Localization
 
     /// <summary>
     /// The first names/titles that can be used to construct the name of the villain.
@@ -70,8 +70,10 @@ public sealed partial class SpaceVillainArcadeComponent : SharedSpaceVillainArca
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("possibleFirstEnemyNames")]
     public List<string> PossibleFirstEnemyNames = new(){
-        "the Automatic", "Farmer", "Lord", "Professor", "the Cuban", "the Evil", "the Dread King",
-        "the Space", "Lord", "the Great", "Duke", "General"
+         // Green-Localization-Start
+        "Автоматический", "Фермер", "Лорд", "Профессор", "Кубанский", "Злой", "Страшный Король",
+        "Космический", "Лорд", "Великий", "Герцог", "Генерал"
+         // Green-Localization-End
     };
 
     /// <summary>
@@ -81,8 +83,10 @@ public sealed partial class SpaceVillainArcadeComponent : SharedSpaceVillainArca
     [DataField("possibleLastEnemyNames")]
     public List<string> PossibleLastEnemyNames = new()
     {
-        "Melonoid", "Murdertron", "Sorcerer", "Ruin", "Jeff", "Ectoplasm", "Crushulon", "Uhangoid",
-        "Vhakoid", "Peteoid", "slime", "Griefer", "ERPer", "Lizard Man", "Unicorn"
+         // Green-Localization-Start
+        "Мелоноид", "Убиватор", "Колдун", "Руина", "Джефф", "Эктоплазма", "Крушулон", "Угангоид",
+        "Вакоид", "Петеоид", "слайм", "Грифер", "ЕРПшер", "Человек-Ящерица", "Единорог"
+         // Green-Localization-End
     };
 
     /// <summary>

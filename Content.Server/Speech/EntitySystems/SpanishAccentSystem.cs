@@ -23,7 +23,7 @@ namespace Content.Server.Speech.EntitySystems
         private string InsertS(string message)
         {
             // Replace every new Word that starts with s/S
-            var msg = message.Replace(" s", " es").Replace(" S", " Es");
+            var msg = message.Replace(" s", " es").Replace(" S", " Es").Replace(" с", " эс").Replace(" С", " Эс"); // Green-Localization
 
             // Still need to check if the beginning of the message starts
             if (msg.StartsWith("s", StringComparison.Ordinal))
@@ -34,6 +34,14 @@ namespace Content.Server.Speech.EntitySystems
             {
                 return msg.Remove(0, 1).Insert(0, "Es");
             }
+
+            // Green-Localization-Start
+            if (msg.StartsWith('с'))
+                return $"эс{msg[1..]}";
+
+            if (msg.StartsWith('С'))
+                return $"Эс{msg[1..]}";
+            // Green-Localization-End
 
             return msg;
         }

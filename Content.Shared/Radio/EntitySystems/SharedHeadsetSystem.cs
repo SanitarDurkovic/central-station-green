@@ -64,7 +64,7 @@ public abstract class SharedHeadsetSystem : EntitySystem
 
             args.Verbs.Add(new()
             {
-                Text = toggled ? $"[bold]{name}" : name,
+                Text = toggled ? $"[bold]{name}[/bold]" : name,
                 Priority = priority++,
                 Category = GreenVerbCategory.ToggleHeadsetSound,
                 Act = () => ToggleHeadsetSound((uid, component), channel, !toggled)
