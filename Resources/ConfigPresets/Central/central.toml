@@ -1,4 +1,5 @@
 [game]
+desc = "Проект Central Station на сборке Green."
 lobbyduration = 360
 maxcharacterslots = 8
 map_pool = "CorvaxMapPool"
@@ -11,5 +12,13 @@ contraband_examine = false
 github = "https://github.com/GreenSpaceStation/space-station-14-green"
 wiki = "https://centralspace.ru"
 
-[console]
-login_host_user = "FireNameFN"
+[viewport]
+maximum_width = 25
+
+[admin]
+see_own_notes = true
+
+[shuttle]
+arrivals_map = "/Maps/Corvax/Misc/corvax_terminal.yml"
+emrgency_early_launch_allowed = true
+auto_call_time = 150
