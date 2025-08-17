@@ -10,8 +10,7 @@
   skinColoration: Hues
   maleFirstNames: NamesVulpkaninFirstMale
   femaleFirstNames: NamesVulpkaninFirstFemale
-  maleLastNames: NamesVulpkaninLast
-  femaleLastNames: NamesVulpkaninLast
+  lastNames: NamesVulpkaninLast
 
 - type: speciesBaseSprites
   id: MobVulpkaninSprites

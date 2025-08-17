@@ -1,4 +1,4 @@
 - files: ["announce.ogg", "blusp_anomalies.ogg", "centcomm.ogg", "comms_blackout.ogg", "flux.ogg", "gasleak_end.ogg", "gasleak_start.ogg", "ventclog.ogg"]
-  license: "CC-BY-SA 3.0"
+  license: "CC-BY-SA-3.0"
   copyright: "Taken from TauCeti GitHub."
   source: "https://github.com/TauCetiStation/TauCetiClassic/commit/92d2767dbb39f28540f78d5055e7be1eb7acee98"

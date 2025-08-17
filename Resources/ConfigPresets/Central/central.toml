@@ -20,5 +20,5 @@ see_own_notes = true
 
 [shuttle]
 arrivals_map = "/Maps/Corvax/Misc/corvax_terminal.yml"
-emrgency_early_launch_allowed = true
+emergency_early_launch_allowed = true
 auto_call_time = 150

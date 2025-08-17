@@ -53,6 +53,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/Shuttles/ShuttleEvent/honki.yml", // Contains golden honker, clown's rubber stamp
             "/Maps/Shuttles/ShuttleEvent/instigator.yml", // Contains EXP-320g "Friendship"
             "/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", // Contains syndicate rubber stamp
+            "/Maps/Corvax/corvax_awesome.yml" // Green-Maps
         };
 
         private static readonly string[] GameMaps =
@@ -75,6 +76,23 @@ namespace Content.IntegrationTests.Tests
             "Relic",
             "dm01-entryway",
             "Exo",
+            // Green-Maps-Start
+            "CorvaxAvrite",
+            "CorvaxDelta",
+            "CorvaxSilly",
+            "CorvaxOutpost",
+            "CorvaxAstra",
+            "CorvaxMaus",
+            "CorvaxPaper",
+            "CorvaxPilgrim",
+            "CorvaxSplit",
+            "CorvaxTerra",
+            "CorvaxPearl",
+            "CorvaxTushkan",
+            "CorvaxGlacier",
+            "CorvaxAwesome",
+            "CorvaxChloris",
+            // Green-Maps-End
         };
 
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";

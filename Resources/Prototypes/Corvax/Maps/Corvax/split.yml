@@ -41,7 +41,6 @@
             Zookeeper: [ 1, 1 ]
             # command
             Captain: [ 1, 1 ]
-            IAA: [ 1, 1 ]
             # engineering
             AtmosphericTechnician: [ 1, 1 ]
             # medical
@@ -97,7 +96,6 @@
             Musician: [ 1, 1 ]
             # command
             Captain: [ 1, 1 ]
-            IAA: [ 1, 1 ]
             # engineering
             AtmosphericTechnician: [ 1, 1 ]
             StationEngineer: [ 2, 2 ]
@@ -108,7 +106,6 @@
             HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
             Detective: [ 1, 1 ]
-            Pilot: [ 2, 2]
             SecurityOfficer: [ 3, 3 ]
             SecurityCadet: [ 2, 3 ]
             # cargo
@@ -153,7 +150,6 @@
             Musician: [ 1, 1 ]
             # command
             Captain: [ 1, 1 ]
-            IAA: [ 1, 1 ]
             # engineering
             ChiefEngineer: [ 1, 1 ]
             AtmosphericTechnician: [ 2, 3 ]
