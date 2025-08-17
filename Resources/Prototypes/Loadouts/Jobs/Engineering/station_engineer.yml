@@ -42,9 +42,11 @@
 - type: loadout
   id: SeniorEngineerBeret
   startingGear: EngineeringBeret
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorEngineering
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorEngineering
+  # Green-MentorRoles-End
 
 # Jumpsuit
 - type: loadout
@@ -64,17 +66,21 @@
 
 - type: loadout
   id: SeniorEngineerJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorEngineering
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorEngineering
+  # Green-MentorRoles-End
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorEngineer
 
 - type: loadout
   id: SeniorEngineerJumpskirt
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorEngineering
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorEngineering
+  # Green-MentorRoles-End
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorEngineer
 
@@ -124,8 +130,10 @@
 
 - type: loadout
   id: SeniorEngineerPDA
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorEngineering
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorEngineering
+  # Green-MentorRoles-End
   equipment:
     id: SeniorEngineerPDA

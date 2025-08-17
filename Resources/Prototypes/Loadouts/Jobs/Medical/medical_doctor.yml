@@ -33,9 +33,11 @@
 
 - type: loadout
   id: SeniorPhysicianBeret
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorPhysician
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorPhysician
+  # Green-MentorRoles-End
   equipment:
     head: ClothingHeadHatBeretSeniorPhysician
 
@@ -85,17 +87,21 @@
 
 - type: loadout
   id: SeniorPhysicianJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorPhysician
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorPhysician
+  # Green-MentorRoles-End
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorPhysician
 
 - type: loadout
   id: SeniorPhysicianJumpskirt
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorPhysician
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorPhysician
+  # Green-MentorRoles-End
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorPhysician
 
@@ -138,9 +144,11 @@
 
 - type: loadout
   id: SeniorPhysicianLabCoat
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorPhysician
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorPhysician
+  # Green-MentorRoles-End
   equipment:
     outerClothing: ClothingOuterCoatLabSeniorPhysician
 
@@ -158,9 +166,11 @@
 
 - type: loadout
   id: SeniorPhysicianPDA
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorPhysician
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorPhysician
+  # Green-MentorRoles-End
   equipment:
     id: SeniorPhysicianPDA
 

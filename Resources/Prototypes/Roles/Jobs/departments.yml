@@ -84,6 +84,7 @@
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
+  - SeniorEngineer # Green-MentorRoles
   - StationEngineer
   - TechnicalAssistant
 
@@ -99,6 +100,7 @@
   - MedicalIntern
   - Psychologist
   - Paramedic
+  - SeniorPhysician # Green-MentorRoles
 
 - type: department
   id: Security
@@ -110,6 +112,7 @@
   - HeadOfSecurity
   - SecurityCadet
   - SecurityOfficer
+  - SeniorOfficer # Green-MentorRoles
   - Detective
   - Warden
 
@@ -120,6 +123,7 @@
   color: "#D381C9"
   roles:
   - ResearchDirector
+  - SeniorResearcher # Green-MentorRoles
   - Scientist
   - ResearchAssistant
 

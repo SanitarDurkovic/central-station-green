@@ -17,9 +17,11 @@
 - type: loadout
   id: ScientificBeret
   startingGear: ScientificBeret
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorResearcher
+  # Green-MentorRoles-End
 
 - type: loadout
   id: RoboticistCap
@@ -61,17 +63,21 @@
 
 - type: loadout
   id: SeniorResearcherJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorResearcher
+  # Green-MentorRoles-End
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorResearcher
 
 - type: loadout
   id: SeniorResearcherJumpskirt
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorResearcher
+  # Green-MentorRoles-End
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorResearcher
 
@@ -119,9 +125,11 @@
 
 - type: loadout
   id: SeniorResearcherLabCoat
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorResearcher
+  # Green-MentorRoles-End
   equipment:
     outerClothing: ClothingOuterCoatLabSeniorResearcher
 
@@ -150,8 +158,10 @@
 
 - type: loadout
   id: SeniorResearcherPDA
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorResearcher
+  # Green-MentorRoles-End
   equipment:
     id: SeniorResearcherPDA

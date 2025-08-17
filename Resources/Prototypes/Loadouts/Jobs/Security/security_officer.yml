@@ -72,17 +72,21 @@
 
 - type: loadout
   id: SeniorOfficerJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorOfficer
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorOfficer
+  # Green-MentorRoles-End
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorOfficer
 
 - type: loadout
   id: SeniorOfficerJumpskirt
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorOfficer
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorOfficer
+  # Green-MentorRoles-End
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorOfficer
 
@@ -153,9 +157,11 @@
 
 - type: loadout
   id: SeniorOfficerPDA
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorOfficer
+  # Green-MentorRoles-Start
+  # effects:
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorOfficer
+  # Green-MentorRoles-End
   equipment:
     id: SeniorOfficerPDA
 

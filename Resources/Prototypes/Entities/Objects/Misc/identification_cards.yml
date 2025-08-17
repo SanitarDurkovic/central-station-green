@@ -794,6 +794,8 @@
     layers:
     - state: default
     - state: idseniorengineer
+  - type: PresetIdCard # Green-MentorRoles
+    job: SeniorEngineer
 
 - type: entity
   parent: ResearchIDCard
@@ -804,6 +806,8 @@
     layers:
     - state: default
     - state: idseniorresearcher
+  - type: PresetIdCard # Green-MentorRoles
+    job: SeniorResearcher
 
 - type: entity
   parent: MedicalIDCard
@@ -814,6 +818,8 @@
     layers:
     - state: default
     - state: idseniorphysician
+  - type: PresetIdCard # Green-MentorRoles
+    job: SeniorPhysician
 
 - type: entity
   parent: SecurityIDCard
@@ -824,6 +830,8 @@
     layers:
     - state: default
     - state: idseniorofficer
+  - type: PresetIdCard # Green-MentorRoles
+    job: SeniorOfficer
 
 - type: entity
   parent: IDCardStandard
