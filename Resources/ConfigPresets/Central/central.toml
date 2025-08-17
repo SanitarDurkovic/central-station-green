@@ -1,0 +1,15 @@
+[game]
+lobbyduration = 360
+maxcharacterslots = 8
+map_pool = CorvaxMapPool
+soft_max_players = 60
+secret_weight_prototype = CentralSecret
+contraband_examine = false
+
+[infolinks]
+#discord
+github = "https://github.com/GreenSpaceStation/space-station-14-green"
+wiki = "https://centralspace.ru"
+
+[console]
+login_host_user = FireNameFN
