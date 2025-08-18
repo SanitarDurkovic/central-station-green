@@ -1,4 +1,5 @@
 [game]
+hostname = "[RU][18+] Central Station"
 desc = "Проект Central Station на сборке Green."
 lobbyduration = 360
 maxcharacterslots = 8
