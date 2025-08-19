@@ -1,12 +1,16 @@
 using System.Collections.Immutable;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Chat.Managers;
 using Content.Server.Database;
+using Content.Server.Discord;
 using Content.Server.GameTicking;
+using Content.Shared._Green.GCVar;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Players;
@@ -48,6 +52,8 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
     private readonly Dictionary<ICommonSession, List<ServerRoleBanDef>> _cachedRoleBans = new();
     // Cached ban exemption flags are used to handle
     private readonly Dictionary<ICommonSession, ServerBanExemptFlags> _cachedBanExemptions = new();
+
+    private readonly HttpClient _http = new(); // Green-BanWebhook
 
     public void Initialize()
     {
@@ -192,6 +198,8 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
         _sawmill.Info(logMessage);
         _chat.SendAdminAlert(logMessage);
 
+        ExecuteWebhookServerBan(targetUsername ?? "null", adminName, banDef); // Green-BanWebhook
+
         KickMatchingConnectedPlayers(banDef, "newly placed ban");
     }
 
@@ -277,6 +285,14 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
         var length = expires == null ? Loc.GetString("cmd-roleban-inf") : Loc.GetString("cmd-roleban-until", ("expires", expires));
         _chat.SendAdminAlert(Loc.GetString("cmd-roleban-success", ("target", targetUsername ?? "null"), ("role", role), ("reason", reason), ("length", length)));
 
+        // Green-BanWebhook-Start
+        var adminName = banningAdmin is null
+            ? Loc.GetString("system-user")
+            : (await _db.GetPlayerRecordByUserId(banningAdmin.Value))?.LastSeenUserName ?? Loc.GetString("system-user");
+
+        ExecuteWebhookRoleBan(targetUsername ?? "null", adminName, banDef);
+        // Green-BanWebhook-End
+
         if (target != null && _playerManager.TryGetSessionById(target.Value, out var session))
         {
             SendRoleBans(session);
@@ -349,4 +365,59 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
     {
         _sawmill = _logManager.GetSawmill(SawmillId);
     }
+
+    // Green-BanWebhook-Start
+    private void ExecuteWebhookServerBan(string target, string admin, ServerBanDef def)
+    {
+        string title;
+        string description;
+        int color;
+
+        if (def.ExpirationTime is null)
+        {
+            title = _localizationManager.GetString("admin-webhook-ban-server-permanent-title");
+            description = _localizationManager.GetString("admin-webhook-ban-server-permanent-description",
+                ("target", target), ("admin", admin), ("date", def.BanTime.ToUniversalTime()), ("reason", def.Reason));
+            color = 0xFF0000;
+        }
+        else
+        {
+            title = _localizationManager.GetString("admin-webhook-ban-server-temporarily-title");
+            description = _localizationManager.GetString("admin-webhook-ban-server-temporarily-description",
+                ("target", target), ("admin", admin), ("date", def.BanTime.ToUniversalTime()), ("expires", def.ExpirationTime.Value.ToUniversalTime()), ("reason", def.Reason));
+            color = 0xFF7F00;
+        }
+
+        ExecuteWebhook(title, description, color);
+    }
+
+    private void ExecuteWebhookRoleBan(string target, string admin, ServerRoleBanDef def)
+    {
+        if (def.ExpirationTime is null)
+            return;
+
+        var title = _localizationManager.GetString("admin-webhook-ban-role-title");
+        var description = _localizationManager.GetString("admin-webhook-ban-role-description",
+            ("target", target), ("admin", admin), ("date", def.BanTime.ToUniversalTime()), ("expires", def.ExpirationTime.Value.ToUniversalTime()), ("role", def.Role), ("reason", def.Reason));
+        var color = 0xFFFF00;
+
+        ExecuteWebhook(title, description, color);
+    }
+
+    private void ExecuteWebhook(string title, string description, int color)
+    {
+        WebhookPayload payload = new()
+        {
+            Embeds = [
+                new() {
+                    Title = title,
+                    Description = description,
+                    Color = color
+                }
+            ]
+        };
+
+        _http.PostAsync(_cfg.GetCVar(GCVars.DiscordBanWebhook), new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json"));
+    }
+    // Green-BanWebhook-End
 }
