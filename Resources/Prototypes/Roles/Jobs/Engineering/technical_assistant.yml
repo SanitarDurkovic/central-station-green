@@ -5,10 +5,10 @@
   playTimeTracker: JobTechnicalAssistant
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 3600 #1 hr
+      time: 7200 #2 hr # Green-JobTime
     - !type:DepartmentTimeRequirement
       department: Engineering
-      time: 18000 #5 hrs
+      time: 72000 #20 hrs # Green-JobTime
       inverted: true # stop playing intern if you're good at engineering!
   startingGear: TechnicalAssistantGear
   icon: "JobIconTechnicalAssistant"

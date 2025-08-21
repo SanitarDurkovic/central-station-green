@@ -8,13 +8,13 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobChemist
-      time: 9000 #2.5 hrs
+      time: 21600 #6 hrs # Green-JobTime
     - !type:RoleTimeRequirement
       role: JobMedicalDoctor
-      time: 18000 #5 hrs
+      time: 36000 #10 hrs # Green-JobTime
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 36000 #10 hrs
+      time: 72000 #20 hrs # Green-JobTime
   weight: 10
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
