@@ -21,6 +21,9 @@ auto_call_time = 150
 [ic]
 flavor_text = true
 
+[vote]
+enabled = false
+
 [viewport]
 maximum_width = 25
 
