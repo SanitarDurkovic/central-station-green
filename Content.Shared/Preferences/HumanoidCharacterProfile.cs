@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Shared._Green.Notes;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -68,6 +69,11 @@ namespace Content.Shared.Preferences
         [DataField]
         public string FlavorText { get; set; } = string.Empty;
 
+        // Green-Notes-Start
+        [DataField]
+        public ErpPreference Erp { get; private set; } = ErpPreference.No;
+        // Green-Notes-End
+
         /// <summary>
         /// Associated <see cref="SpeciesPrototype"/> for this profile.
         /// </summary>
@@ -125,6 +131,7 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile(
             string name,
             string flavortext,
+            ErpPreference erp, // Green-Notes
             string species,
             int age,
             Sex sex,
@@ -139,6 +146,7 @@ namespace Content.Shared.Preferences
         {
             Name = name;
             FlavorText = flavortext;
+            Erp = erp; // Green-Notes
             Species = species;
             Age = age;
             Sex = sex;
@@ -170,6 +178,7 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile(HumanoidCharacterProfile other)
             : this(other.Name,
                 other.FlavorText,
+                other.Erp, // Green-Notes
                 other.Species,
                 other.Age,
                 other.Sex,
@@ -272,6 +281,13 @@ namespace Content.Shared.Preferences
         {
             return new(this) { FlavorText = flavorText };
         }
+
+        // Green-Notes-Start
+        public HumanoidCharacterProfile WithErpPreference(ErpPreference erp)
+        {
+            return new(this) { Erp = erp };
+        }
+        // Green-Notes-End
 
         public HumanoidCharacterProfile WithAge(int age)
         {
@@ -470,6 +486,7 @@ namespace Content.Shared.Preferences
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
             if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
             if (FlavorText != other.FlavorText) return false;
+            if (Erp != other.Erp) return false; // Green-Notes
             return Appearance.MemberwiseEquals(other.Appearance);
         }
 
@@ -551,6 +568,17 @@ namespace Content.Shared.Preferences
                 flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText);
             }
 
+            // Green-Notes-Start
+            var erp = Erp switch
+            {
+                ErpPreference.Against => ErpPreference.Against,
+                ErpPreference.No => ErpPreference.No,
+                ErpPreference.Yes => ErpPreference.Yes,
+                ErpPreference.Absolute => ErpPreference.Absolute,
+                _ => ErpPreference.No
+            };
+            // Green-Notes-End
+
             var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
 
             var prefsUnavailableMode = PreferenceUnavailable switch
@@ -599,6 +627,7 @@ namespace Content.Shared.Preferences
 
             Name = name;
             FlavorText = flavortext;
+            Erp = erp; // Green-Notes
             Age = age;
             Sex = sex;
             Gender = gender;
@@ -708,6 +737,7 @@ namespace Content.Shared.Preferences
             hashCode.Add(_loadouts);
             hashCode.Add(Name);
             hashCode.Add(FlavorText);
+            hashCode.Add((int)Erp); // Green-Notes
             hashCode.Add(Species);
             hashCode.Add(Age);
             hashCode.Add((int)Sex);

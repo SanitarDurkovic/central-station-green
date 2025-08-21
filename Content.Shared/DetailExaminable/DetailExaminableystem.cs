@@ -30,7 +30,12 @@ public sealed class DetailExaminableSystem : EntitySystem
             Act = () =>
             {
                 var markup = new FormattedMessage();
-                markup.AddMarkupPermissive(ent.Comp.Content);
+                // Green-Notes-Start
+                if (ent.Comp.Content.Length > 0)
+                    markup.AddMarkupPermissive(ent.Comp.Content + "\n\n");
+                markup.AddMarkupOrThrow(Loc.GetString("humanoid-profile-editor-ooc-label") + '\n');
+                markup.AddMarkupOrThrow(Loc.GetString($"detail-examinable-verb-erp-{ent.Comp.Erp.ToString().ToLower()}"));
+                // Green-Notes-End
                 _examine.SendExamineTooltip(user, ent, markup, false, false);
             },
             Text = Loc.GetString("detail-examinable-verb-text"),

@@ -1,5 +1,13 @@
 ﻿<Control Name="CFlavorText" xmlns="https://spacestation14.io">
     <BoxContainer Orientation="Vertical" HorizontalExpand="True">
         <TextEdit Name="CFlavorTextInput" Access="Public" MinSize="220 100" Margin="10" HorizontalExpand="True" VerticalExpand="True" />
+        <!-- Green-Notes-Start -->
+        <RichTextLabel Text="{Loc 'humanoid-profile-editor-ooc-label'}" />
+        <BoxContainer HorizontalExpand="True">
+            <Label Text="{Loc 'humanoid-profile-editor-erp-label'}" />
+            <Control HorizontalExpand="True" />
+            <OptionButton Name="ErpButton" Access="Public" HorizontalAlignment="Right" />
+        </BoxContainer>
+        <!-- Green-Notes-End -->
     </BoxContainer>
 </Control>

@@ -13,13 +13,19 @@ contraband_examine = false
 github = "https://github.com/GreenSpaceStation/space-station-14-green"
 wiki = "https://centralspace.ru"
 
+[shuttle]
+arrivals_map = "/Maps/Corvax/Misc/corvax_terminal.yml"
+emergency_early_launch_allowed = true
+auto_call_time = 150
+
+[ic]
+flavor_text = true
+
 [viewport]
 maximum_width = 25
 
 [admin]
 see_own_notes = true
 
-[shuttle]
-arrivals_map = "/Maps/Corvax/Misc/corvax_terminal.yml"
-emergency_early_launch_allowed = true
-auto_call_time = 150
+[server]
+lobby_name = "Central Station"

@@ -4,6 +4,7 @@ using Content.Server.IdentityManagement;
 using Content.Server.Mind;
 using Content.Server.PDA;
 using Content.Server.Station.Components;
+using Content.Shared._Green.Notes;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.CCVar;
@@ -136,10 +137,14 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             _humanoidSystem.LoadProfile(entity.Value, profile);
             _metaSystem.SetEntityName(entity.Value, profile.Name);
 
-            if (profile.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))
+            // Green-Notes-Start
+            if ((profile.FlavorText != "" || profile.Erp != ErpPreference.No) && _configurationManager.GetCVar(CCVars.FlavorText))
             {
-                AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
+                var detail = AddComp<DetailExaminableComponent>(entity.Value);
+                detail.Content = profile.FlavorText;
+                detail.Erp = profile.Erp;
             }
+            // Green-Notes-End
         }
 
         if (loadout != null)

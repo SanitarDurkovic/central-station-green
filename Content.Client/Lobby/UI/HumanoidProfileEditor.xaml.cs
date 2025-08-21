@@ -9,6 +9,7 @@ using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Sprite;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Systems.Guidebook;
+using Content.Shared._Green.Notes;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing;
 using Content.Shared.GameTicking;
@@ -59,6 +60,7 @@ namespace Content.Client.Lobby.UI
 
         private FlavorText.FlavorText? _flavorText;
         private TextEdit? _flavorTextEdit;
+        private OptionButton? _erpButton; // Green-Notes
 
         // One at a time.
         private LoadoutWindow? _loadoutWindow;
@@ -469,8 +471,10 @@ namespace Content.Client.Lobby.UI
                 TabContainer.AddChild(_flavorText);
                 TabContainer.SetTabTitle(TabContainer.ChildCount - 1, Loc.GetString("humanoid-profile-editor-flavortext-tab"));
                 _flavorTextEdit = _flavorText.CFlavorTextInput;
+                _erpButton = _flavorText.ErpButton; // Green-Notes
 
                 _flavorText.OnFlavorTextChanged += OnFlavorTextChange;
+                _flavorText.OnErpChanged += OnErpChange;
             }
             else
             {
@@ -479,9 +483,14 @@ namespace Content.Client.Lobby.UI
 
                 TabContainer.RemoveChild(_flavorText);
                 _flavorText.OnFlavorTextChanged -= OnFlavorTextChange;
+                _flavorText.OnErpChanged -= OnErpChange; // Green-Notes
                 _flavorText.Dispose();
                 _flavorTextEdit?.Dispose();
                 _flavorTextEdit = null;
+                // Green-Notes-Start
+                _erpButton?.Dispose();
+                _erpButton = null;
+                // Green-Notes-End
                 _flavorText = null;
             }
         }
@@ -757,6 +766,7 @@ namespace Content.Client.Lobby.UI
 
             UpdateNameEdit();
             UpdateFlavorTextEdit();
+            UpdateErpButton(); // Green-Notes
             UpdateSexControls();
             UpdateGenderControls();
             UpdateSkinColor();
@@ -1074,6 +1084,17 @@ namespace Content.Client.Lobby.UI
             SetDirty();
         }
 
+        // Green-Notes-Start
+        private void OnErpChange(ErpPreference erp)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithErpPreference(erp);
+            SetDirty();
+        }
+        // Green-Notes-End
+
         private void OnMarkingChange(MarkingSet markings)
         {
             if (Profile is null)
@@ -1263,6 +1284,14 @@ namespace Content.Client.Lobby.UI
                 _flavorTextEdit.TextRope = new Rope.Leaf(Profile?.FlavorText ?? "");
             }
         }
+
+        // Green-Notes-Start
+        private void UpdateErpButton()
+        {
+            if (_erpButton is not null)
+                _erpButton.SelectId((int)(Profile?.Erp ?? ErpPreference.No));
+        }
+        // Green-Notes-End
 
         private void UpdateAgeEdit()
         {
