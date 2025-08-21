@@ -25,7 +25,6 @@ namespace Content.Client.FlavorText
             ErpButton.AddItem(Loc.GetString("humanoid-profile-editor-erp-against-text"), (int)ErpPreference.Against);
             ErpButton.AddItem(Loc.GetString("humanoid-profile-editor-erp-no-text"), (int)ErpPreference.No);
             ErpButton.AddItem(Loc.GetString("humanoid-profile-editor-erp-yes-text"), (int)ErpPreference.Yes);
-            ErpButton.AddItem(Loc.GetString("humanoid-profile-editor-erp-absolute-text"), (int)ErpPreference.Absolute);
 
             ErpButton.OnItemSelected += e => ErpChanged(e.Id);
             // Green-Notes-End

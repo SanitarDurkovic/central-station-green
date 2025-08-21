@@ -574,7 +574,6 @@ namespace Content.Shared.Preferences
                 ErpPreference.Against => ErpPreference.Against,
                 ErpPreference.No => ErpPreference.No,
                 ErpPreference.Yes => ErpPreference.Yes,
-                ErpPreference.Absolute => ErpPreference.Absolute,
                 _ => ErpPreference.No
             };
             // Green-Notes-End
