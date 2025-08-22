@@ -25,6 +25,10 @@
     - yells
     - yelled
     - yelling
+    # Green-Localization-Start
+    - крик
+    - кричит
+    # Green-Localization-End
 
 - type: emote
   id: Laugh
@@ -54,6 +58,10 @@
     - chortle
     - chortles
     - chortling
+    # Green-Localization-Start
+    - смех
+    - смеётся
+    # Green-Localization-End
 
 - type: emote
   id: Honk
@@ -72,6 +80,10 @@
     - honks
     - honked
     - honking
+    # Green-Localization-Start
+    - хонк
+    - хонкает
+    # Green-Localization-End
 
 - type: emote
   id: Sigh
@@ -89,6 +101,14 @@
     - sigh
     - sighs
     - sighed
+    # Green-Localization-Start
+    - вздох
+    - вздыхает
+    - вздыхнул
+    - вздыхнуло
+    - вздыхнули
+    - вздыхнуло
+    # Green-Localization-End
 
 - type: emote
   id: Whistle
@@ -106,6 +126,10 @@
     - whistle
     - whistles
     - whistleblowing
+    # Green-Localization-Start
+    - свист
+    - свистит
+    # Green-Localization-End
 
 - type: emote
   id: Crying
@@ -126,6 +150,9 @@
     - sob
     - sobs
     - sobbing
+    # Green-Localization-Start
+    - плачет
+    # Green-Localization-End
 
 - type: emote
   id: Squish
@@ -144,6 +171,9 @@
     - squish
     - squishing
     - squishes
+    # Green-Localization-Start
+    - хлюпает
+    # Green-Localization-End
 
 - type: emote
   id: Chitter
@@ -162,6 +192,9 @@
    - chitter
    - chitters
    - chittered
+   # Green-Localization-Start
+   - стрекочет
+   # Green-Localization-End
 
 - type: emote
   id: Squeak
@@ -180,6 +213,9 @@
    - squeak
    - squeaks
    - squeaked
+   # Green-Localization-Start
+   - пищит
+   # Green-Localization-End
 
 - type: emote
   id: Click
@@ -197,6 +233,10 @@
   chatTriggers:
    - click
    - clicks
+   # Green-Localization-Start
+   - клац
+   - клацает
+   # Green-Localization-End
 
 # hand emotes
 - type: emote
@@ -215,6 +255,9 @@
     - claps
     - clapping
     - clapped
+    # Green-Localization-Start
+    - хлопает
+    # Green-Localization-End
 
 - type: emote
   id: ClapSingle
@@ -234,6 +277,9 @@
     - claps her hands together
     - claps his hands together
     - claps its hands together
+    # Green-Localization-Start
+    - хлопок
+    # Green-Localization-End
 
 - type: emote
   id: Snap
@@ -260,6 +306,10 @@
     - snaps its fingers
     - snapping fingers
     - snapped fingers
+    # Green-Localization-Start
+    - щелкает
+    - щёлкает
+    # Green-Localization-End
 
 - type: emote
   id: Thump
@@ -285,6 +335,9 @@
     - thumps her tail
     - thumps his tail
     - thumps its tail
+    # Green-Localization-Start
+    - стучит хвостом
+    # Green-Localization-End
 
 - type: emote
   id: Salute
@@ -301,6 +354,10 @@
   chatTriggers:
     - salute
     - salutes
+    # Green-Localization-Start
+    - салютует
+    - отдаёт честь
+    # Green-Localization-End
 
 - type: emote
   id: Gasp
@@ -354,6 +411,9 @@
     - buzz
     - buzzed
     - buzzes
+    # Green-Localization-Start
+    - жужжит
+    # Green-Localization-End
 
 - type: emote
   id: Weh
@@ -388,6 +448,9 @@
     - chirps
     - chirped
     - chirping
+    # Green-Localization-Start
+    - чирикает
+    # Green-Localization-End
 
 # Machine Emotes
 - type: emote
@@ -407,6 +470,9 @@
     - beeps
     - beeped
     - beeping
+    # Green-Localization-Start
+    - бип
+    # Green-Localization-End
 
 - type: emote
   id: Chime
@@ -425,6 +491,9 @@
     - chimes
     - chimed
     - chiming
+    # Green-Localization-Start
+    - дзынь
+    # Green-Localization-End
 
 - type: emote
   id: Buzz-Two
@@ -449,6 +518,10 @@
     - buzzes twice
     - buzzing twice
     - buzzed twice
+    # Green-Localization-Start
+    - бип буп
+    - бип бип
+    # Green-Localization-End
 
 - type: emote
   id: Ping
@@ -467,3 +540,6 @@
     - pings
     - pinged
     - pinging
+    # Green-Localization-Start
+    - пинг
+    # Green-Localization-End

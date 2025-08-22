@@ -26,6 +26,14 @@
     - cough!
     - coughs!
     - coughed!
+    # Green-Localization-Start
+    - кешель
+    - кашляет
+    - кашлянул
+    - кашлянула
+    - кашлянули
+    - кашлянуло
+    # Green-Localization-End
 
 - type: emote
   id: CatMeow
@@ -66,6 +74,14 @@
   chatTriggers:
     - yawn
     - yawns
+    # Green-Localization-Start
+    - зевок
+    - зевает
+    - зевнул
+    - зевнула
+    - зевнули
+    - зевнуло
+    # Green-Localization-End
 
 - type: emote
   id: Snore
