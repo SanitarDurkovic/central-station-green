@@ -235,6 +235,7 @@ public sealed partial class CriminalRecordsConsoleWindow : FancyWindow
 
         PersonPrints.Text = stationRecord.Fingerprint ??  Loc.GetString("generic-not-available-shorthand");
         PersonDna.Text = stationRecord.DNA ??  Loc.GetString("generic-not-available-shorthand");
+        PersonHandwriting.Text = stationRecord.Handwriting ?? Loc.GetString("generic-not-available-shorthand"); // Green-Signs
 
         if (criminalRecord.Status != SecurityStatus.None)
         {

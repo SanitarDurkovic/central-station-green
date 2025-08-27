@@ -5,6 +5,7 @@ using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Popups;
 using Content.Server.Power.Components;
 using Content.Server.Tools;
+using Content.Shared._Green.Sign;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Database;
@@ -298,10 +299,11 @@ public sealed class FaxSystem : EntitySystem
                     args.Data.TryGetValue(FaxConstants.FaxPaperLabelData, out string? label);
                     args.Data.TryGetValue(FaxConstants.FaxPaperStampStateData, out string? stampState);
                     args.Data.TryGetValue(FaxConstants.FaxPaperStampedByData, out List<StampDisplayInfo>? stampedBy);
+                    args.Data.TryGetValue(FaxConstants.FaxPaperSignsData, out List<SignInfo>? signs); // Green-Signs
                     args.Data.TryGetValue(FaxConstants.FaxPaperPrototypeData, out string? prototypeId);
                     args.Data.TryGetValue(FaxConstants.FaxPaperLockedData, out bool? locked);
 
-                    var printout = new FaxPrintout(content, name, label, prototypeId, stampState, stampedBy, locked ?? false);
+                    var printout = new FaxPrintout(content, name, label, prototypeId, stampState, stampedBy, signs, locked ?? false); // Green-Signs
                     Receive(uid, printout, args.SenderAddress);
 
                     break;
@@ -474,6 +476,7 @@ public sealed class FaxSystem : EntitySystem
                                        metadata.EntityPrototype?.ID ?? component.PrintPaperId,
                                        paper.StampState,
                                        paper.StampedBy,
+                                       paper.Signs, // Green-Signs
                                        paper.EditingDisabled);
 
         component.PrintingQueue.Enqueue(printout);
@@ -544,6 +547,11 @@ public sealed class FaxSystem : EntitySystem
             payload[FaxConstants.FaxPaperStampStateData] = paper.StampState;
             payload[FaxConstants.FaxPaperStampedByData] = paper.StampedBy;
         }
+
+        // Green-Signs-Start
+        if (paper.Signs.Count > 0)
+            payload[FaxConstants.FaxPaperSignsData] = paper.Signs;
+        // Green-Signs-End
 
         _deviceNetworkSystem.QueuePacket(uid, component.DestinationFaxAddress, payload);
 

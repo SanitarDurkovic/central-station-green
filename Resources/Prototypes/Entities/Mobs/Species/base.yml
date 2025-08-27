@@ -165,6 +165,7 @@
   - type: StandingState
   - type: Crawler
   - type: Dna
+  - type: Handwriting # Green-Signs
   - type: MindContainer
     showExamineInfo: true
   - type: CanEnterCryostorage

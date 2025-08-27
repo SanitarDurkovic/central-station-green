@@ -1,3 +1,4 @@
+using Content.Shared._Green.Sign;
 using Content.Shared.Forensics.Components;
 
 namespace Content.Shared.Forensics.Systems;
@@ -15,4 +16,6 @@ public abstract class SharedForensicsSystem : EntitySystem
     /// Does nothing if it does not have the FingerprintComponent.
     /// </summary>
     public virtual void RandomizeFingerprint(Entity<FingerprintComponent?> ent) { }
+
+    public virtual void RandomizeHandwriting(Entity<HandwritingComponent?> entity) { } // Green-Signs
 }

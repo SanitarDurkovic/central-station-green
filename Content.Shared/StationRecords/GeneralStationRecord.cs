@@ -68,4 +68,9 @@ public sealed record GeneralStationRecord
     /// </summary>
     [DataField]
     public string? DNA;
+
+    // Green-Signs-Start
+    [DataField]
+    public string? Handwriting;
+    // Green-Signs-End
 }

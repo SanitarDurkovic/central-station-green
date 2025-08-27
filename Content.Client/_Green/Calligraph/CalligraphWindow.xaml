@@ -1,0 +1,7 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    Title="{Loc calligraph-ui-scan-title}"
+    MinSize="400 600">
+
+    <controls:SearchListContainer Name="RecordList" VerticalExpand="True" />
+</controls:FancyWindow>

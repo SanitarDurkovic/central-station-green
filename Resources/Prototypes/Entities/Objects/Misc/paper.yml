@@ -82,6 +82,8 @@
     interfaces:
       enum.PaperUiKey.Key:
         type: PaperBoundUserInterface
+      enum.SignUiKey.Key: # Green-Signs
+        type: SignBoundUserInterface
   - type: FaxableObject
   - type: PaperVisuals
 

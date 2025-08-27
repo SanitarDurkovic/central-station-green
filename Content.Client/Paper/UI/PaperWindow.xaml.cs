@@ -112,6 +112,7 @@ namespace Content.Client.Paper.UI
             // Randomize the placement of any stamps based on the entity UID
             // so that there's some variety in different papers.
             StampDisplay.PlacementSeed = (int)entity;
+            SignDisplay.PlacementSeed = (int)entity + 1; // Green-Signs
 
             // Initialize the background:
             PaperBackground.ModulateSelfOverride = visuals.BackgroundModulate;
@@ -291,6 +292,20 @@ namespace Content.Client.Paper.UI
             {
                 StampDisplay.AddStamp(new StampWidget{ StampInfo = stamper });
             }
+
+            // Green-Signs-Start
+            SignDisplay.RemoveAllChildren();
+            SignDisplay.RemoveStamps();
+            foreach (var sign in state.Signs)
+                SignDisplay.AddStamp(new StampWidget
+                {
+                    StampInfo = new StampDisplayInfo
+                    {
+                        StampedName = sign.Name,
+                        StampedColor = DefaultTextColor
+                    }
+                });
+            // Green-Signs-End
         }
 
         /// <summary>

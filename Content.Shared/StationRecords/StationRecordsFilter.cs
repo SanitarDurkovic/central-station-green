@@ -43,4 +43,5 @@ public enum StationRecordFilterType : byte
     Species,
     Prints,
     DNA,
+    Handwriting // Green-Signs
 }

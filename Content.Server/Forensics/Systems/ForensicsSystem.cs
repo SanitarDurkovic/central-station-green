@@ -21,6 +21,7 @@ using Robust.Shared.Random;
 using Content.Shared.Verbs;
 using Robust.Shared.Utility;
 using Content.Shared.Hands.Components;
+using Content.Shared._Green.Sign;
 
 namespace Content.Server.Forensics
 {
@@ -38,6 +39,7 @@ namespace Content.Server.Forensics
             SubscribeLocalEvent<FingerprintComponent, MapInitEvent>(OnFingerprintInit, after: new[] { typeof(BloodstreamSystem) });
             // The solution entities are spawned on MapInit as well, so we have to wait for that to be able to set the DNA in the bloodstream correctly without ResolveSolution failing
             SubscribeLocalEvent<DnaComponent, MapInitEvent>(OnDNAInit, after: new[] { typeof(BloodstreamSystem) });
+            SubscribeLocalEvent<HandwritingComponent, MapInitEvent>(OnHandwritingInit, after: [typeof(BloodstreamSystem)]); // Green-Signs
 
             SubscribeLocalEvent<ForensicsComponent, BeingGibbedEvent>(OnBeingGibbed);
             SubscribeLocalEvent<ForensicsComponent, MeleeHitEvent>(OnMeleeHit);
@@ -84,6 +86,14 @@ namespace Content.Server.Forensics
                 RaiseLocalEvent(ent.Owner, ref ev);
             }
         }
+
+        // Green-Signs-Start
+        private void OnHandwritingInit(Entity<HandwritingComponent> entity, ref MapInitEvent e)
+        {
+            if (entity.Comp.Handwriting is null)
+                RandomizeHandwriting((entity.Owner, entity.Comp));
+        }
+        // Green-Signs-End
 
         private void OnBeingGibbed(EntityUid uid, ForensicsComponent component, BeingGibbedEvent args)
         {
@@ -291,6 +301,15 @@ namespace Content.Server.Forensics
             return DNA;
         }
 
+        // Green-Signs-Start
+        public string GenerateHandwriting()
+        {
+            var handwriting = new byte[4];
+            _random.NextBytes(handwriting);
+            return Convert.ToHexString(handwriting);
+        }
+        // Green-Signs-End
+
         private void ApplyEvidence(EntityUid user, EntityUid target)
         {
             if (HasComp<IgnoresFingerprintsComponent>(target))
@@ -338,6 +357,17 @@ namespace Content.Server.Forensics
             ent.Comp.Fingerprint = GenerateFingerprint();
             Dirty(ent);
         }
+
+        // Green-Signs-Start
+        public override void RandomizeHandwriting(Entity<HandwritingComponent?> entity)
+        {
+            if (!Resolve(entity, ref entity.Comp, false))
+                return;
+
+            entity.Comp.Handwriting = GenerateHandwriting();
+            Dirty(entity);
+        }
+        // Green-Signs-End
 
         /// <summary>
         /// Transfer DNA from one entity onto the forensics of another

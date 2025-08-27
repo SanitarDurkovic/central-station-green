@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Access.Systems;
 using Content.Server.Forensics;
+using Content.Shared._Green.Sign;
 using Content.Shared.Access.Components;
 using Content.Shared.Forensics.Components;
 using Content.Shared.GameTicking;
@@ -96,8 +97,9 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
 
         TryComp<FingerprintComponent>(player, out var fingerprintComponent);
         TryComp<DnaComponent>(player, out var dnaComponent);
+        TryComp<HandwritingComponent>(player, out var handwritingComponent); // Green-Signs
 
-        CreateGeneralRecord(station, idUid.Value, profile.Name, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records);
+        CreateGeneralRecord(station, idUid.Value, profile.Name, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, handwritingComponent?.Handwriting, profile, records); // Green-Signs
     }
 
 
@@ -138,6 +140,7 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         string jobId,
         string? mobFingerprint,
         string? dna,
+        string? handwriting, // Green-Signs
         HumanoidCharacterProfile profile,
         StationRecordsComponent records)
     {
@@ -163,7 +166,8 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
             Gender = gender,
             DisplayPriority = jobPrototype.RealDisplayWeight,
             Fingerprint = mobFingerprint,
-            DNA = dna
+            DNA = dna,
+            Handwriting = handwriting // Green-Signs
         };
 
         var key = AddRecordEntry(station, record);
@@ -401,6 +405,10 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
                 && IsFilterWithSomeCodeValue(someRecord.Fingerprint, filterLowerCaseValue),
             StationRecordFilterType.DNA => someRecord.DNA != null
                 && IsFilterWithSomeCodeValue(someRecord.DNA, filterLowerCaseValue),
+            // Green-Signs-Start
+            StationRecordFilterType.Handwriting => someRecord.Handwriting is not null
+                && IsFilterWithSomeCodeValue(someRecord.Handwriting, filterLowerCaseValue),
+            // Green-Signs-End
             _ => throw new IndexOutOfRangeException(nameof(filter.Type)),
         };
     }
