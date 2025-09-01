@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server._Green.StationGoal;
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
@@ -424,6 +425,11 @@ namespace Content.Server.GameTicking
 
             // MapInitialize *before* spawning players, our codebase is too shit to do it afterwards...
             _map.InitializeMap(DefaultMap);
+
+            // Green-StationGoals-Start
+            SendStationGoalsEvent sendStationGoalsEvent = new();
+            RaiseLocalEvent(ref sendStationGoalsEvent);
+            // Green-StationGoals-End
 
             SpawnPlayers(readyPlayers, readyPlayerProfiles, force);
 

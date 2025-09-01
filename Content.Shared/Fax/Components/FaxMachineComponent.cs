@@ -60,6 +60,14 @@ public sealed partial class FaxMachineComponent : Component
     [DataField]
     public bool ReceiveNukeCodes { get; set; } = false;
 
+    // Green-StationGoals-Start
+    [DataField]
+    public bool ReceiveStationGoal;
+
+    [DataField]
+    public bool ReceiveAllStationGoals;
+    // Green-StationGoals-End
+
     /// <summary>
     /// Sound to play when fax printing new message
     /// </summary>

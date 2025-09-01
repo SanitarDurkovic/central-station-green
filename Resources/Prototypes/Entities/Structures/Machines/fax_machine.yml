@@ -87,6 +87,7 @@
   - type: FaxMachine
     name: "Central Command"
     notifyAdmins: true
+    receiveAllStationGoals: true # Green-StationGoals
 
 - type: entity
   parent: FaxMachineBase
@@ -115,5 +116,6 @@
     - type: FaxMachine
       name: "Captain's Office"
       receiveNukeCodes: true
+      receiveStationGoal: true # Green-StationGoals
     - type: StealTarget
       stealGroup: FaxMachineCaptain

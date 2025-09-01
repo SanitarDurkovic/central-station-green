@@ -1,0 +1,14 @@
+- type: stationGoal
+  id: Shuttle
+  text: station-goal-shuttle
+  implicit: true
+
+- type: stationGoal
+  id: Energy
+  text: station-goal-energy
+  implicit: true
+
+- type: stationGoal
+  id: Dormitories
+  text: station-goal-dormitories
+  implicit: true
