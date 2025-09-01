@@ -34,4 +34,4 @@ see_own_notes = true
 lobby_name = "Central Station"
 
 [adminlogs]
-server_name = central
+server_name = "central"
