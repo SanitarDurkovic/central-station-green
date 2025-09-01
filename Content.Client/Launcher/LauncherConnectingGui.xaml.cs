@@ -59,6 +59,7 @@ namespace Content.Client.Launcher
 
             state.PageChanged += OnPageChanged;
             state.ConnectFailReasonChanged += ConnectFailReasonChanged;
+            state.LinkCodeChanged += LinkCodeChanged; // Green-Link
             state.ConnectionStateChanged += ConnectionStateChanged;
             state.ConnectFailed += HandleDisconnectReason;
 
@@ -107,6 +108,20 @@ namespace Content.Client.Launcher
                 ? ""
                 : Loc.GetString("connecting-fail-reason", ("reason", reason)));
         }
+
+        // Green-Link-Start
+        private void LinkCodeChanged(string? code)
+        {
+            if (code is null)
+            {
+                CodeEdit.Visible = false;
+                return;
+            }
+
+            CodeEdit.Visible = true;
+            CodeEdit.Text = code;
+        }
+        // Green-Link-End
 
         private void LastNetDisconnectedArgsChanged(NetDisconnectedArgs? args)
         {

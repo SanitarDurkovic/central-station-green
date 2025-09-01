@@ -38,6 +38,21 @@ namespace Content.Client.Launcher
             }
         }
 
+        // Green-Link-Start
+        public string? LinkCode
+        {
+            get => _linkCode;
+            private set
+            {
+                _linkCode = value;
+                LinkCodeChanged?.Invoke(value);
+            }
+        }
+        private string? _linkCode;
+
+        public event Action<string?>? LinkCodeChanged;
+        // Green-Link-End
+
         public string? LastDisconnectReason => _baseClient.LastDisconnectReason;
 
         public Page CurrentPage
@@ -86,6 +101,7 @@ namespace Content.Client.Launcher
                 Redial();
             }
             ConnectFailReason = args.Reason;
+            LinkCode = args.Message.StringOf("code"); // Green-Link
             CurrentPage = Page.ConnectFailed;
             ConnectFailed?.Invoke(args);
         }

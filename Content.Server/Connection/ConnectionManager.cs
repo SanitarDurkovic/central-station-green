@@ -18,6 +18,12 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using Lidgren.Network;
+using System.Net.Http;
+using Content.Shared._Green.GCVar;
+using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text;
 
 /*
  * TODO: Remove baby jail code once a more mature gateway process is established. This code is only being issued as a stopgap to help with potential tiding in the immediate future.
@@ -142,6 +148,19 @@ namespace Content.Server.Connection
             var hwid = e.UserData.GetModernHwid();
             var trust = e.UserData.Trust;
 
+            // Green-Link-Start
+            var linkDeny = await CheckLinkAsync(e);
+
+            if (linkDeny is not null)
+            {
+                Dictionary<string, object> properties = new() {
+                    { "code", linkDeny.Value.Code }
+                };
+
+                e.Deny(new NetDenyReason(linkDeny.Value.Message, properties));
+            }
+            else
+            // Green-Link-End
             if (deny != null)
             {
                 var (reason, msg, banHits) = deny.Value;
@@ -166,6 +185,35 @@ namespace Content.Server.Connection
                 await _db.UpdatePlayerRecordAsync(userId, e.UserName, addr, hwid);
             }
         }
+
+        // Green-Link-Start
+        private async Task<(string Message, string Code)?> CheckLinkAsync(NetConnectingArgs e)
+        {
+            var address = _cfg.GetCVar(GCVars.DiscordLinkAddress);
+
+            if (string.IsNullOrWhiteSpace(address))
+                return null;
+
+            var body = new
+            {
+                e.UserId.UserId,
+                Nick = e.UserName
+            };
+
+            StringContent content = new(JsonSerializer.Serialize(body), Encoding.UTF8, "application/json");
+
+            var response = await _http.Client.PostAsync($"{address}/user", content);
+
+            if (response.IsSuccessStatusCode)
+                return null;
+
+            response = await _http.Client.PostAsync($"{address}/code", content);
+
+            var linkResponse = await response.Content.ReadFromJsonAsync<LinkResponse>();
+
+            return (_loc.GetString("deny-reason-not-linked"), linkResponse?.Code!);
+        }
+        // Green-Link-End
 
         private async void PlayerStatusChanged(object? sender, SessionStatusEventArgs args)
         {
@@ -372,5 +420,12 @@ namespace Content.Server.Connection
             await _db.AssignUserIdAsync(name, assigned);
             return assigned;
         }
+
+        // Green-Link-Start
+        private sealed class LinkResponse
+        {
+            public string? Code { get; set; }
+        }
+        // Green-Link-End
     }
 }
