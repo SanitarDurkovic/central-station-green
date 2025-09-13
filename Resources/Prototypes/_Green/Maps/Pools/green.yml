@@ -2,17 +2,17 @@
   id: GreenMapPool
   maps:
   # Midpop 25–55
-  - CorvaxPaper
+  - GreenPaper
   - CorvaxOutpost
   - CorvaxAwesome
-  - CorvaxPearl
+  # - CorvaxPearl
   - Amber
   - Marathon
   - Bagel
   
   # Lowpop 0–25
-  - CorvaxMaus  
-  - CorvaxSilly
-  - CorvaxTushkan
+  - GreenMaus
+  # - CorvaxSilly
+  - GreenTushkan
   - Packed
-  - Reach
+  - GreenReach

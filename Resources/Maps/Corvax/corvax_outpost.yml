@@ -89,7 +89,7 @@ tilemap:
   124: FloorWhitePlastic
   125: FloorWood
   126: FloorWoodLarge
-  34: FloorWoodParquet
+  34: FloorWoodTile
   127: FloorWoodTile
   128: Lattice
   129: Plating
@@ -15489,13 +15489,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 35.5,-16.5
-      parent: 2
-- proto: BorgBeaker
-  entities:
-  - uid: 853
-    components:
-    - type: Transform
-      pos: -47.72665,-3.5396547
       parent: 2
   - uid: 854
     components:
