@@ -34,7 +34,7 @@ public sealed class DetailExaminableSystem : EntitySystem
                 if (ent.Comp.Content.Length > 0)
                     markup.AddMarkupPermissive(ent.Comp.Content + "\n\n");
                 markup.AddMarkupOrThrow(Loc.GetString("humanoid-profile-editor-ooc-label") + '\n');
-                markup.AddMarkupOrThrow(Loc.GetString($"detail-examinable-verb-erp-{ent.Comp.Erp.ToString().ToLower()}"));
+                markup.AddMarkupOrThrow(Loc.GetString($"detail-examinable-verb-erp-{ent.Comp.Erp}"));
                 // Green-Notes-End
                 _examine.SendExamineTooltip(user, ent, markup, false, false);
             },

@@ -200,16 +200,16 @@ namespace Content.Server.Connection
                 Nick = e.UserName
             };
 
-            StringContent content = new(JsonSerializer.Serialize(body), Encoding.UTF8, "application/json");
+            using StringContent content = new(JsonSerializer.Serialize(body), Encoding.UTF8, "application/json");
 
-            var response = await _http.Client.PostAsync($"{address}/user", content);
+            using var userResponse = await _http.Client.PostAsync($"{address}/user", content);
 
-            if (response.IsSuccessStatusCode)
+            if (userResponse.IsSuccessStatusCode)
                 return null;
 
-            response = await _http.Client.PostAsync($"{address}/code", content);
+            using var codeResponse = await _http.Client.PostAsync($"{address}/code", content);
 
-            var linkResponse = await response.Content.ReadFromJsonAsync<LinkResponse>();
+            var linkResponse = await codeResponse.Content.ReadFromJsonAsync<LinkResponse>();
 
             return (_loc.GetString("deny-reason-not-linked"), linkResponse?.Code!);
         }
